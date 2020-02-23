@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers; 
 
-use PagesController extends Controller {
+class PagesController extends Controller {
 
 	public function getIndex() {
 		/*process variable data or parameters
@@ -11,20 +11,15 @@ use PagesController extends Controller {
 		pass data to the view
 		*/
 
-		reuturn view('welcome');
-
+		reuturn 'About me';
 	} 
 
 	public function getAbout() {
-
-		reuturn view('about');
-
+		reuturn 'About me';
 	}
 
 	public function getContact() {
-
-		reuturn view('contact');
-
+		reuturn 'About me';
 	}
 
 }

@@ -11,15 +11,15 @@ class PagesController extends Controller {
 		pass data to the view
 		*/
 
-		reuturn 'About me';
+		reuturn view('welcome');
 	} 
 
 	public function getAbout() {
-		reuturn 'About me';
+		reuturn view('about');
 	}
 
 	public function getContact() {
-		reuturn 'About me';
+		reuturn view('contact');
 	}
 
 }

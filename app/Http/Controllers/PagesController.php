@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers; 
 
+use Illuminate\Http\Request;
+
 class PagesController extends Controller {
 
 	public function getIndex() {
@@ -11,15 +13,15 @@ class PagesController extends Controller {
 		pass data to the view
 		*/
 
-		reuturn view('welcome');
+		return view('pages.welcome');
 	} 
 
 	public function getAbout() {
-		reuturn view('about');
+		return view('pages.about');
 	}
 
 	public function getContact() {
-		reuturn view('contact');
+		return view('pages.contact');
 	}
 
 }

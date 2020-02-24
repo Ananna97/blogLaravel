@@ -8,14 +8,14 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Octarine, color of magic</title>
   </head>
   <body>
 
     <!--Default Bootstrap Navbar -->
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Octarine</a>
+      <a class="navbar-brand" href="/">Octarine</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -23,7 +23,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/about">About</a>
@@ -47,8 +47,8 @@
     </nav>
 
     <div class="container">
-        <div clarr="row">
-            <div clas="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
                 <div class="jumbotron">
                       <h1 class="display-4">Octarine, magic world!</h1>
                       <p class="lead">A world of dragons, fairies and mythical animls. </p>
@@ -60,12 +60,38 @@
         </div>
 
 
-        <div clarr="row">
-            <div clas="col-md-8" style="background-color:red;">
-                When Mnet's Open Time Prime Time block was closed they sought a new service to keep viewership of the popular programs in the block up. To do this they would need to be affordable to all families in order to do this. Dstv wanted to launch a scaled down package for low income households for the cost of R19.00. The second half of open time was kept for this new pay TV package and also wanted to launch with a service called Mnet Lite. Up to the end of the Open Time block this new offer was heavily advertised on the pay TV Terrestrial channel. A lot of secrecy was around this new channel and when launched it was a combination of rerun and first run content from Channel O and
+        <div class="row">
+            <div class="col-md-8">
+                <div class="post">
+                    <h3>Post Title</h3>
+                    <p>When Mnet's Open Time Prime Time block was closed they sought a new service to keep viewership of the popular programs in the block up. To do this they would need to be affordable to all families in order to do this. Dstv wanted to launch a scaled down package for low i</p>
+                    <a href="#" class="btn btn-primary">Read More</a>
+                </div>
+
+                <hr>
+
+                <div class="post">
+                    <h3>Post Title</h3>
+                    <p>When Mnet's Open Time Prime Time block was closed they sought a new service to keep viewership of the popular programs in the block up. To do this they would need to be affordable to all families in order to do this. Dstv wanted to launch a scaled down package for low i</p>
+                    <a href="#" class="btn btn-primary">Read More</a>
+                </div>
+
+                <hr>
+
+                <div class="post">
+                    <h3>Post Title</h3>
+                    <p>When Mnet's Open Time Prime Time block was closed they sought a new service to keep viewership of the popular programs in the block up. To do this they would need to be affordable to all families in order to do this. Dstv wanted to launch a scaled down package for low i</p>
+                    <a href="#" class="btn btn-primary">Read More</a>
+                </div>
+
+                <hr>
+
+                
             </div>
 
-            <div clas="col-md-3 col-md-offset-1" style="background-color:orange;">When Mnet's Open Time Prime Time block was closed they sought a new service to keep viewership of the popular programs in the block up. To do this they would need to be affordable to all families in order to do this. Dstv wanted to launch a scaled down package for low i</div>
+            <div class="col-md-4 col-md-offset-1">
+                <h2>Sidebar</h2>
+            </div>
         </div>
     </div>
 

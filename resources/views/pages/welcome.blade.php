@@ -16,43 +16,25 @@
         </div>
 
 
-        <div class="row">
+         <div class="row">
             <div class="col-md-8">
-                <div class="post">
-                    <h3>Post Title</h3>
-                    <p>When Mnet's Open Time Prime Time block was closed they sought a new service to keep viewership of the popular programs in the block up. To do this they would need to be affordable to all families in order to do this. Dstv wanted to launch a scaled down package for low i</p>
-                    <a href="#" class="btn btn-primary">Read More</a>
-                </div>
-
-                <hr>
-
-                <div class="post">
-                    <h3>Post Title</h3>
-                    <p>When Mnet's Open Time Prime Time block was closed they sought a new service to keep viewership of the popular programs in the block up. To do this they would need to be affordable to all families in order to do this. Dstv wanted to launch a scaled down package for low i</p>
-                    <a href="#" class="btn btn-primary">Read More</a>
-                </div>
-
-                <hr>
-
-                <div class="post">
-                    <h3>Post Title</h3>
-                    <p>When Mnet's Open Time Prime Time block was closed they sought a new service to keep viewership of the popular programs in the block up. To do this they would need to be affordable to all families in order to do this. Dstv wanted to launch a scaled down package for low i</p>
-                    <a href="#" class="btn btn-primary">Read More</a>
-                </div>
-
-                <hr>
-
                 
+                @foreach($posts as $post)
+
+                    <div class="post">
+                        <h3>{{ $post->title }}</h3>
+                        <p>{{ substr(strip_tags($post->body), 0, 350) }}{{ strlen(strip_tags($post->body)) > 350 ? "..." : "" }}</p>
+                        <a href="#" class="btn btn-primary">Read More</a>
+                    </div>
+
+                    <hr>
+
+                @endforeach
+
             </div>
 
-            <div class="col-md-4 col-md-offset-1">
+            <div class="col-md-3 col-md-offset-1">
                 <h2>Sidebar</h2>
             </div>
         </div>
-@endsection
-
-@section('scripts')
-<script>
-  confirm('I  loaded JS! ');
-</script>
-@endsection
+@stop

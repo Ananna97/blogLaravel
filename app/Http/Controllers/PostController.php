@@ -18,7 +18,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('id', 'desc')->paginate(10);
+        $posts = Post::orderBy('id', 'desc')->paginate(5);
         return view('posts.index')->withPosts($posts);
     }
 
@@ -43,7 +43,8 @@ class PostController extends Controller
         // validate the data
         $this->validate($request, array(
                 'title'         => 'required|max:255',
-                'body'          => 'required'
+                'body'          => 'required',
+                'slug'          => 'required|alpha_dash|min:5|max:255|unique:posts,slug'
             ));
 
         // store in the database
@@ -51,6 +52,7 @@ class PostController extends Controller
 
         $post->title = $request->title;
         $post->body = $request->body;
+        $post->slug = $request->slug;
 
         $post->save();
 
@@ -98,7 +100,8 @@ class PostController extends Controller
         
         $this->validate($request, array(
             'title' => 'required|max:255',
-            'body'  => 'required'
+            'body'  => 'required',
+            'slug'  => 'required|alpha_dash|min:5|max:255|unique:posts,slug'
         ));
 
         // Save the data to the database
@@ -106,6 +109,7 @@ class PostController extends Controller
 
         $post->title = $request->input('title');
         $post->body = $request->input('body');
+        $post->slug = $request->input('slug');
 
         $post->save();
 
@@ -124,6 +128,11 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+
+        $post->delete();
+
+        Session::flash('success', 'The post was successfully deleted.');
+        return redirect()->route('posts.index');
     }
 }

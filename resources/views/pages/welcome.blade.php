@@ -10,7 +10,7 @@
                       <p class="lead">A world of dragons, fairies and mythical animls. </p>
                       <hr class="my-4">
                       <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-                      <a class="btn btn-primary btn-lg" href="#" role="button">Posts</a>
+                      <a class="btn btn-primary btn-lg" href="{{ route('posts.index') }}" role="button">Posts</a>
                     </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
                     <div class="post">
                         <h3>{{ $post->title }}</h3>
                         <p>{{ substr(strip_tags($post->body), 0, 350) }}{{ strlen(strip_tags($post->body)) > 350 ? "..." : "" }}</p>
-                        <a href="#" class="btn btn-primary">Read More</a>
+                        <a href="{{ url('blog/'.$post->slug) }}" class="btn btn-primary">Read More</a>
                     </div>
 
                     <hr>

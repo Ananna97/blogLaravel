@@ -34,12 +34,7 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('password/confirm', ['as' => 'password.confirm', 'uses' => 'Auth\ConfirmPasswordController@showConfirmForm']);
 	Route::post('password/confirm', ['as' => 'password.confirm', 'uses' => 'Auth\ConfirmPasswordController@confirm']);
 
-
-
-
 	//Pages Routes
-
-	
 	Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'BlogController@getSingle'])->where('slug', '[\w\d\-\_]+');
 	Route::get('blog', ['uses' => 'BlogController@getIndex', 'as' => 'blog.index']);
 	Route::get('contact', 'PagesController@getContact');
@@ -47,6 +42,11 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/', 'PagesController@getIndex');
 	Route::get('/home', 'PagesController@getIndex');
 	Route::resource('posts', 'PostController');
+
+	// Categories
+	Route::resource('categories', 'CategoryController', ['except' => ['create']]);
+	Route::resource('tags', 'TagController', ['except' => ['create']]);
+
 });
 
 

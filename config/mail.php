@@ -1,5 +1,6 @@
 <?php
 
+//IF MAIL DOES NOT WORK CHECK GOOGLE SECURITY AND C:\xampp\htdocs\Laravel\blog\bootstrap\cache\config.php !!!!!!!!!!!!!!!!!!!!!!!!!!!!
 return [
 
     /*
@@ -86,7 +87,7 @@ return [
 
     'username' => env('MAIL_USERNAME'),
 
-    'password' => env('MAIL_PASSWORD'),
+    'password' => env('MAIL_PASSWORD',Magie2020*),
 
     /*
     |--------------------------------------------------------------------------

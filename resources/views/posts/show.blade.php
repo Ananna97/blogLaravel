@@ -11,6 +11,14 @@
 			<p class="lead">{!! $post->body !!}</p>
 
 			<hr>
+			
+			<div class="tags">
+				@foreach ($post->tags as $tag)
+					<span class="label label-default">{{ $tag->name }}</span>
+				@endforeach
+			</div>
+
+			<hr>
 		</div>
 
 		<div class="col-md-4">
@@ -18,6 +26,11 @@
 				<dl class="dl-horizontal">
 					<label>Url:</label>
 					<p><a href="{{ route('blog.single', $post->slug) }}">{{ route('blog.single', $post->slug) }}</a></p>
+				</dl>
+
+				<dl class="dl-horizontal">
+					<label>Category:</label>
+					<p>{{ $post->category->name }}</p>
 				</dl>
 
 				<dl class="dl-horizontal">

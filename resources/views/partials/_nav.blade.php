@@ -9,7 +9,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Laravel Blog</a>
+
+<link href="https://fonts.googleapis.com/css2?family=Griffy&display=swap" rel="stylesheet">
+<style>
+.navbar-brand {
+  font-family: 'Griffy', cursive;
+}
+
+</style>
+      <a class="navbar-brand" href="#">Octarine - Color of magic</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -27,8 +35,8 @@
           <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello {{ Auth::user()->name }} <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="{{ route('posts.index') }}">Posts</a></li>
-            <li><a href="#">Categories</a></li>
-            <li><a href="#">Tags</a></li>
+            <li><a href="{{ route('categories.index') }}">Categories</a></li>
+            <li><a href="{{ route('tags.index') }}">Tags</a></li>
             <li role="separator" class="divider"></li>
             <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Logout') }}
                 </a>

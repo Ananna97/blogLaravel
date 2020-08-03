@@ -11,7 +11,7 @@ use App\Post;
 class BlogController extends Controller
 {
     public function getIndex() {
-		$posts = Post::paginate(5);
+		$posts = Post::orderBy('id', 'desc')->paginate(5);
 
 		return view('blog.index')->withPosts($posts);
 	}
@@ -22,5 +22,24 @@ class BlogController extends Controller
 
     	// return the view and pass in the post object
     	return view('blog.single')->withPost($post);
+    }
+
+    public function search(Request $request)
+    {
+
+        //search after at least 3 minimum characters
+
+        $request->validate([
+            'query' => 'required|min:3',
+        ]);
+
+        $query = $request->input('query');
+
+        $posts = Post::where('title', 'like', "%$query%")
+                            ->orWhere('body', 'like', "%$query%")
+                           ->orWhere('slug', 'like', "%$query%")
+                            ->orderBy('id', 'desc')->paginate(3);
+
+        return view('blog.search')->with('posts', $posts);
     }
 }

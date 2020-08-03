@@ -87,7 +87,7 @@ return [
 
     'username' => env('MAIL_USERNAME'),
 
-    'password' => env('MAIL_PASSWORD',Magie2020*),
+    'password' => env('MAIL_PASSWORD','Magie2020*'),
 
     /*
     |--------------------------------------------------------------------------

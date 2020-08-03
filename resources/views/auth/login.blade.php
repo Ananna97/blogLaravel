@@ -15,14 +15,12 @@
                 {{ Form::password('password', ['class' => 'form-control']) }}
                 
                 <br>
-                {{ Form::checkbox('remember') }}{{ Form::label('remember', "Remember Me") }}
                 
-                <br>
-                {{ Form::submit('Login', ['class' => 'btn btn-primary btn-block']) }}
+                {{ Form::submit('Login', ['id'=>"submitButton", 'class' => 'btn btn-primary btn-block']) }}
 
                 <br>
 
-                <p><a href="{{ url('password/request') }}">Forgot My Password</a>
+                <p><a  style="color:white" href="{{ url('password/request') }}">Forgot My Password</a>
 
 
             {!! Form::close() !!}

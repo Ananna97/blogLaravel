@@ -10,6 +10,9 @@ use App\Post;
 use App\Category;
 use App\Tag;
 use Session;
+use Purifier;
+use Image;
+use Storage;
 
 class PostController extends Controller
 {
@@ -48,17 +51,31 @@ class PostController extends Controller
         $this->validate($request, array(
                 'title'         => 'required|max:255',
                 'body'          => 'required',
-                'slug'          => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
-                'category_id'   => 'required|integer'
+                'slug'          => 'required|alpha_dash|min:3|max:255|unique:posts,slug',
+                'category_id'   => 'required|integer',
+                'featured_image' => 'sometimes|image'
             ));
 
         // store in the database
         $post = new Post;
 
         $post->title = $request->title;
-        $post->body = $request->body;
+        $post->body = Purifier::clean($request->body);
         $post->slug = $request->slug;
         $post->category_id = $request->category_id;
+
+
+        if ($request->hasFile('featured_image')) {
+          $image = $request->file('featured_image');
+
+          //the extension of the file: timestamp.extension (jpg, png)
+          $filename = time() . '.' . $image->getClientOriginalExtension();
+          $location = public_path('images/creatures/'.$filename);
+          Image::make($image)->save($location);
+          $post->image = $filename;
+
+        }
+
 
         $post->save();
 
@@ -121,29 +138,37 @@ class PostController extends Controller
         // Validate the data
         $post = Post::find($id);
 
-        if ($request->input('slug') == $post->slug) {
-            $this->validate($request, array(
-                'title' => 'required|max:255',
-                'body'  => 'required',
-                'category_id' => 'required|integer'
-            ));
-        } else {
         $this->validate($request, array(
                 'title' => 'required|max:255',
                 'body'  => 'required',
-                'slug'  => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
-                'category_id' => 'required|integer'
+                'slug'  => "required|alpha_dash|min:3|max:255|unique:posts,slug,$id",
+                'category_id' => 'required|integer',
+                'featured_image' => 'image'
             ));
-        }
-
 
         // Save the data to the database
         $post = Post::find($id);
 
         $post->title = $request->input('title');
-        $post->body = $request->input('body');
+        $post->body = Purifier::clean($request->input('body'));
         $post->slug = $request->input('slug');
         $post->category_id = $request->input('category_id');
+
+        if ($request->hasFile('featured_image')) {
+            //Add new phto
+            $image = $request->file('featured_image');
+
+            //the extension of the file: timestamp.extension (jpg, png)
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('images/creatures/'.$filename);
+            Image::make($image)->save($location);
+            $oldFilename = $post->image;
+
+            //Update the Database
+            $post->image = $filename;
+            //Delete the old photo
+            Storage::delete($oldFilename);
+        }
 
         $post->save();
 
@@ -170,6 +195,8 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $post->tags()->detach();
+
+        Storage::delete($post->image);
 
         $post->tags()->detach();
 

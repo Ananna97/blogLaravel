@@ -3,9 +3,26 @@
 @section('title', '| Create New Post')
 
 @section('stylesheets')
+	<style>
+	body{
+		background: url("../../images/backgrounds/oct8.jpg");
+		background-position: center;
+		background-size: cover;
+		color:#002644;
+	}
+	</style>
 
 	{!! Html::style('css/parsley.css') !!}
 	{!! Html::style('css/select2.min.css') !!}
+	<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+
+	<script>
+		tinymce.init({
+			selector: 'textarea',
+			plugins: 'link code',
+			menubar: false
+		});
+	</script>
 
 @endsection
 
@@ -15,13 +32,13 @@
 		<div class="col-md-8 col-md-offset-2">
 			<h1>Create New Post</h1>
 			<hr>
-			{!! Form::open(array('route' => 'posts.store', 'data-parsley-validate' => '')) !!}
+			{!! Form::open(array('route' => 'posts.store', 'data-parsley-validate' => '', 'files' => true)) !!}
 				{{ Form::label('title', 'Title:') }}
 				{{ Form::text('title', null, array('class' => 'form-control', 'required' => '', 'maxlength' => '255')) }}
 
 				{{ Form::label('slug', 'Slug:') }}
 				{{ Form::text('slug', null, array('class' => 'form-control', 'required' => '', 'minlength' => '5', 'maxlength' => '255') ) }}
-				
+
 				{{ Form::label('category_id', 'Category:') }}
 				<select class="form-control" name="category_id">
 					@foreach($categories as $category)
@@ -39,16 +56,19 @@
 
 				</select>
 
+				{{ Form::label('featured_image', 'Upload a Featured Image') }}
+				{{ Form::file('featured_image') }}
 
 				{{ Form::label('body', "Post Body:") }}
 				{{ Form::textarea('body', null, array('class' => 'form-control')) }}
 
-				{{ Form::submit('Create Post', array('class' => 'btn btn-success btn-lg btn-block', 'style' => 'margin-top: 20px;')) }}
+				{{ Form::submit('Create Post', array('id'=>"submitButton", 'class' => 'btn btn-success btn-lg btn-block', 'style' => 'margin-top: 20px;')) }}
 			{!! Form::close() !!}
 		</div>
 	</div>
 
 @endsection
+
 
 @section('scripts')
 

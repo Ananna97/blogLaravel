@@ -10,7 +10,6 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th>#</th>
 						<th>Name</th>
 						<th>Description</th>
 					</tr>
@@ -19,9 +18,13 @@
 				<tbody>
 					@foreach ($categories as $category)
 					<tr>
-						<th>{{ $category->id }}</th>
-						<td>{{ $category->name }}</td>
-						<td>{{ $category->description }}</td>
+						<td>
+							<a class="tagName" href="{{ route('categories.show', $category->id) }}">{{ $category->name }}</a>
+						</td>
+
+						<td>
+							{{ substr(strip_tags($category->description), 0, 50) }}{{ strlen(strip_tags($category->description)) > 50 ? "..." : "" }}
+						</td>
 					</tr>
 					@endforeach
 				</tbody>
@@ -39,7 +42,7 @@
 					{{ Form::label('description', 'Description:') }}
 					{{ Form::text('description', null, ['class' => 'form-control']) }}
 
-					{{ Form::submit('Create New Category', ['class' => 'btn btn-primary btn-block btn-h1-spacing']) }}
+					{{ Form::submit('Create New Category', ['id'=>"submitButton", 'class' => 'btn btn-primary btn-block btn-h1-spacing']) }}
 				
 				{!! Form::close() !!}
 			</div>

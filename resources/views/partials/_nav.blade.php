@@ -10,14 +10,11 @@
         <span class="icon-bar"></span>
       </button>
 
-<link href="https://fonts.googleapis.com/css2?family=Griffy&display=swap" rel="stylesheet">
-<style>
-.navbar-brand {
-  font-family: 'Griffy', cursive;
-}
+      <link href="https://fonts.googleapis.com/css2?family=Griffy&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Emilys+Candy&display=swap" rel="stylesheet">
 
-</style>
-      <a class="navbar-brand" href="#">Octarine - Color of magic</a>
+
+      <a class="navbar-brand" href="/"><img class="octicon" src="../../images/octicon1.png" alt="Octarine"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -29,7 +26,16 @@
         <li class="{{ Request::is('contact') ? "active" : "" }}"><a href="/contact">Contact</a></li>
       </ul>
 
+
       <ul class="nav navbar-nav navbar-right">
+
+        <li class="searchBar">
+          <form class="form-inline my-2 my-lg-0" method="GET" action={{ route('search') }}>
+            <input class="form-control mr-sm-2" type="search" style="margin-top:7px" value="{{ request()->input('query') }}" placeholder="Search" name="query">
+            <button class="btn btn-outline-dark my-2 my-sm-0" id="submitButton" style="margin-top:-5px">Search</button>
+          </form>
+        </li>
+
         @if (Auth::check())
         <li class="dropdown">
           <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello {{ Auth::user()->name }} <span class="caret"></span></a>

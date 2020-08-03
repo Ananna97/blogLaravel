@@ -5,3 +5,245 @@
 .form-spacing-top {
 	margin-top: 30px;
 }
+
+.comment {
+	margin-bottom: 45px;
+}
+
+.author-image {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	float: left;
+}
+
+.author-name {
+	float: left;
+	margin-left: 15px; 
+}
+
+.author-name>h4 {
+	margin: 5px 0px;
+	
+}
+
+.author-time {
+	font-size: 11px;
+	font-style: italic;
+	color: #aaa;
+}
+
+.comment-content {
+	clear: both;
+	margin-left: 65px;
+	font-size: 16px;
+	line-height: 1.3em;
+}
+
+.comments-title {
+	margin-bottom:45px;
+}
+
+.comments-title>span {
+	margin-right: 15px;
+}
+
+.octicon{
+	display: block;
+	float: left;
+	height: auto;
+	margin-top: -60px;
+	padding: 0;
+	width: 150px;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	position: relative;
+	width: auto;
+	background: url("../images/backgrounds/oct7.jpg");
+	background-position: center;
+	background-size: cover;
+  	height: 100%;
+	z-index: 3;
+
+
+    color: white;
+    font-family: 'Emilys Candy', cursive, bold;
+    font-size: 20px;
+
+}
+
+label{
+	font-weight: 400;
+}
+
+.container{
+	width: 80%;
+}
+
+.active,.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover{
+	font-weight: bold;
+    background: rgba(255,255,255,0);
+    color: white;
+}
+
+.navbar, .dropdown-menu, .navbar-header,.navbar-toggle, .navbar-default .navbar-nav>li>a, .dropdown-menu>li>a{
+	margin-top: 20px;
+	margin-bottom: 10px;
+ 	font-family: 'Griffy', cursive;
+    background: rgba(255,255,255,0);
+    border: 0;
+    font-size: 30px;
+    color: white;
+    font-weight: lighter;;
+}
+
+.imgpost{
+	width: 40%;
+	float: right;
+	margin-left: 20px;
+}
+
+#textpost{
+	display: inline;
+	margin-right: 10px;
+	font-size: 18px;
+	width: 40%;
+}
+
+.btnSubmitContact{
+	background:linear-gradient(to bottom, #8d5cc7 5%, #20054a 100%);
+	background-color:#8d5cc7;
+	border-radius:11px;
+	border:1px solid #8d5cc7;
+	display:inline-block;
+	cursor:pointer;
+    color: white;
+    font-size: 20px;
+	font-weight:bold;
+	padding:8px 15px;
+	text-decoration:none;
+}
+
+.btnSubmitContact:hover {
+	background:linear-gradient(to bottom, #20054a 5%, #8d5cc7 100%);
+	background-color:#20054a;
+	color:white;
+	text-decoration: none;
+}
+.btnSubmitContact:active {
+	text-decoration: none;
+	color:white;
+	position:relative;
+	top:1px;
+}
+
+.searchBar{
+	margin:20px;
+}
+
+#submitButton{
+	background:linear-gradient(to bottom, #0d2050 5%, #6fe1e3 100%);
+	color:white;
+	font-weight:bold;
+	font-size: 15px;
+  	border: none;
+  	margin-top: 10px;
+}
+
+#submitButton:hover{
+	background:linear-gradient(to bottom,  #9d69cd 5%, #52097d 100%);
+	color:white;
+  	border: none;
+}
+
+.tagName{
+	color: white;
+}
+.tagName:hover{
+	color: white;
+}
+
+#editButton{
+	background:linear-gradient(to bottom, #356ca1 5%, #76acad 100%);
+	color:white;
+	font-weight:bold;
+	font-size: 15px;
+  	border: none;
+}
+
+#editButton:hover{
+	background:linear-gradient(to bottom,  #0f1d6f 5%, #356ca1 100%);
+	color:white;
+  	border: none;
+}
+
+#deleteButton{
+	background:linear-gradient(to bottom, #b2839f 5%, #e00dbc 100%);
+	color:white;
+	font-weight:bold;
+	font-size: 15px;
+  	border: none;
+}
+
+#deleteButton:hover{
+	background:linear-gradient(to bottom,  #900678 5%, #b2839f 100%);
+	color:white;
+  	border: none;
+}
+
+.bestImg{
+	margin-top: 130px;
+	margin-left: 50px;
+}
+
+.jumbotron{
+	float:left;
+	width:835px;
+	height:482px;
+	background: url("../images/smokes/smoke7.png");
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.well{
+	background:none;
+	border: none;
+
+}
+
+.form-control,#message, #email, #subject{
+	color:#002644;
+	font-size: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.blogPostIMG{
+	width: 70%;
+	float: right;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both
+}
+
+.column-66 {
+  float: left;
+  width: 66.66666%;
+  padding: 20px;
+}
+
+.column-33 {
+  float: left;
+  width: 33.33333%;
+  padding: 20px;
+}
+
+.categoryDescription{
+	width: 50%;
+}

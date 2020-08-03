@@ -7,19 +7,13 @@
 	<div class="row">
 		<div class="col-md-8">
 			<h1>Tags</h1>
-			<table class="table">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>Name</th>
-					</tr>
-				</thead>
+			<hr>
+			<table class="table" style="font-size: 25px">
 
 				<tbody>
 					@foreach ($tags as $tag)
 					<tr>
-						<th>{{ $tag->id }}</th>
-						<td><a href="{{ route('tags.show', $tag->id) }}">{{ $tag->name }}</a></td>
+						<td  style="border: 0"><a class="tagName" href="{{ route('tags.show', $tag->id) }}">{{ $tag->name }}</a></td>
 					</tr>
 					@endforeach
 				</tbody>
@@ -33,7 +27,7 @@
 					{{ Form::label('name', 'Name:') }}
 					{{ Form::text('name', null, ['class' => 'form-control']) }}
 
-					{{ Form::submit('Create New Tag', ['class' => 'btn btn-primary btn-block btn-h1-spacing']) }}
+					{{ Form::submit('Create New Tag', ['id'=>"submitButton", 'class' => 'btn btn-primary btn-block btn-h1-spacing']) }}
 				
 				{!! Form::close() !!}
 			</div>

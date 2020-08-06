@@ -10,6 +10,10 @@
 		background-size: cover;
 		color:#002644;
 	}
+
+	label,h1, .col-md-4{
+		color:white;
+	}
 	</style>
 
 	{!! Html::style('css/select2.min.css') !!}

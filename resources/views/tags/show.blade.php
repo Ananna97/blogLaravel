@@ -25,7 +25,7 @@
 					<tr>
 						<th>Title</th>
 						<th>Tags</th>
-						<th></th>
+						<th>Post</th>
 					</tr>
 				</thead>
 

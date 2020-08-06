@@ -10,6 +10,10 @@
 		background-size: cover;
 		color:#002644;
 	}
+
+	label,h1{
+		color:white;
+	}
 	</style>
 
 	{!! Html::style('css/parsley.css') !!}

@@ -6,6 +6,8 @@
     
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
+            <h1 class="display-4">Guest Login</h1>
+
             {!! Form::open() !!}
 
                 {{ Form::label('email', 'Email:') }}

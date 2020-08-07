@@ -1,3 +1,4 @@
+
 @extends('main')
 
 @section('title', '| View category')
@@ -22,7 +23,9 @@
 						<tr>
 							<th>Name</th>
 							<th></th>
+							@if(\Illuminate\Support\Facades\Auth::guard('admin')->check())
 							<th>Actions</th>
+							@endif
 							<th width="70px"></th>
 						</tr>
 					</thead>
@@ -32,8 +35,9 @@
 						<tr  style="border: 0">
 							<td>{{ $post->title }}</td>
 							<td>
-								<a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary"  id="submitButton">View Post</a>
+								<a href="{{ route('blog.single', $post->slug) }}" class="btn btn-primary"  id="submitButton">View Post</a>
 							</td>
+							@if(\Illuminate\Support\Facades\Auth::guard('admin')->check())
 							<td>
 								<div class="col-sm-6">
 									{!! Html::linkRoute('posts.edit', 'Edit', array($post->id), array('id'=>"editButton",'class' => 'btn btn-primary btn-block')) !!}
@@ -45,6 +49,8 @@
 
 									{!! Form::close() !!}
 								</div>
+							</td>
+							@endif
 						</tr>
 						@endforeach
 					</tbody>
@@ -52,6 +58,7 @@
 			</div>
 		</div>
 
+		@if(\Illuminate\Support\Facades\Auth::guard('admin')->check())
 		<div class="col-md-4">
 			<div class="well">
 				<dl class="dl-horizontal">
@@ -88,6 +95,7 @@
 
 			</div>
 		</div>
+		@endif
 	</div>
 
 @endsection

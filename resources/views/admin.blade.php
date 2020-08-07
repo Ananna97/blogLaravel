@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', ' | Home')
+@section('title', ' | Home Admin')
 
 @section('content')
 <link href="https://fonts.googleapis.com/css2?family=Griffy&display=swap" rel="stylesheet">
@@ -20,21 +20,11 @@
         <div class="row">
             <div class="col-md-8" style="max-width: 775px">
               
-
-                  @if(\Illuminate\Support\Facades\Auth::guard('admin')->check())
                   <div class="jumbotron">
-                        <h1 class="titlemagic" align="center"style="margin-top: 150px;">Octarine - ADMIN PAGE</h1>
-                        <p class="wsquote" align="center">"Take care at the changes you do. They may be irreversible."</p>
-                        <p class="wsquote" align="right"> - Main admin, Ana Iancu </p>
-                  </div>
-
-                  @else
-                  <div class="jumbotron">
-                        <h1 class="titlemagic" align="center"style="margin-top: 150px;">Octarine</h1>
+                        <h1 class="titlemagic" align="center"style="margin-top: 150px;">Octarine - ADMIN</h1>
                         <p class="wsquote" align="center">"If this be magic, let it be an art Lawful as eating."</p>
                         <p class="wsquote" align="right"> - "The Winter's Tale", by William Shakespeare </p>
                   </div>
-                  @endif
                 
                 @foreach($posts as $post)
 

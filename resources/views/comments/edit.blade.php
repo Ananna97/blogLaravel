@@ -1,28 +1,32 @@
-@extends('main')
+@if(\Illuminate\Support\Facades\Auth::guard('admin')->check())
+	@extends('main')
 
-@section('title', '| Edit Comment')
+	@section('title', '| Edit Comment')
 
-@section('content')
+	@section('content')
 
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<h1>Edit Comment</h1>
-			
-			{{ Form::model($comment, ['route' => ['comments.update', $comment->id], 'method' => 'PUT']) }}
-			
-				{{ Form::label('name', 'Name:') }}
-				{{ Form::text('name', null, ['class' => 'form-control', 'disabled' => '']) }}
-			
-				{{ Form::label('email', 'Email:') }}
-				{{ Form::text('email', null, ['class' => 'form-control', 'disabled' => '']) }}
-			
-				{{ Form::label('comment', 'Comment:') }}
-				{{ Form::textarea('comment', null, ['class' => 'form-control']) }}
-			
-				{{ Form::submit('Update Comment', ['id'=>"submitButton", 'class' => 'btn btn-block btn-success', 'style' => 'margin-top: 15px;']) }}
-			
-			{{ Form::close() }}
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<h1>Edit Comment</h1>
+				
+				{{ Form::model($comment, ['route' => ['comments.update', $comment->id], 'method' => 'PUT']) }}
+				
+					{{ Form::label('name', 'Name:') }}
+					{{ Form::text('name', null, ['class' => 'form-control', 'disabled' => '']) }}
+				
+					{{ Form::label('email', 'Email:') }}
+					{{ Form::text('email', null, ['class' => 'form-control', 'disabled' => '']) }}
+				
+					{{ Form::label('comment', 'Comment:') }}
+					{{ Form::textarea('comment', null, ['class' => 'form-control']) }}
+				
+					{{ Form::submit('Update Comment', ['id'=>"submitButton", 'class' => 'btn btn-block btn-success', 'style' => 'margin-top: 15px;']) }}
+				
+				{{ Form::close() }}
+			</div>
 		</div>
-	</div>
 
-@endsection
+	@endsection
+@else
+<meta http-equiv="refresh" content="0; url=/home">
+@endif

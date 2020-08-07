@@ -83,6 +83,11 @@ label{
 	width: 80%;
 }
 
+#tagsTable{
+
+  border-color: transparent;
+}
+
 .active,.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover{
 	font-weight: bold;
     background: rgba(255,255,255,0);
@@ -148,7 +153,7 @@ label{
 	background:linear-gradient(to bottom, #0d2050 5%, #6fe1e3 100%);
 	color:white;
 	font-weight:bold;
-	font-size: 15px;
+	font-size: 20px;
   	border: none;
   	margin-top: 10px;
 }

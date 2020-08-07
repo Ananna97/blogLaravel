@@ -17,48 +17,90 @@
       <a class="navbar-brand" href="/"><img class="octicon" src="../../images/octicon1.png" alt="Octarine"></a>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="{{ Request::is('/') ? "active" : "" }}"><a href="/">Home</a></li>
-        <li class="{{ Request::is('blog') ? "active" : "" }}"><a href="/blog">Blog</a></li>
-        <li class="{{ Request::is('about') ? "active" : "" }}"><a href="/about">About</a></li>
-        <li class="{{ Request::is('contact') ? "active" : "" }}"><a href="/contact">Contact</a></li>
-      </ul>
+    <!-- Collect the nav links, forms, and other content for toggling -->      
 
 
-      <ul class="nav navbar-nav navbar-right">
+      @if(\Illuminate\Support\Facades\Auth::guard('admin')->check())
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="{{ Request::is('admin') ? "active" : "" }}"><a href="/">Home</a></li>
+          <li class="{{ Request::is('posts') ? "active" : "" }}"><a href="{{ route('posts.index') }}">Posts</a></li>
+          <li class="{{ Request::is('categories') ? "active" : "" }}"><a href="{{ route('categories.index') }}">Categories</a></li>
+          <li class="{{ Request::is('tags') ? "active" : "" }}"><a href="{{ route('tags.index') }}">Tags</a></li>
+        </ul>
 
-        <li class="searchBar">
-          <form class="form-inline my-2 my-lg-0" method="GET" action={{ route('search') }}>
-            <input class="form-control mr-sm-2" type="search" style="margin-top:7px" value="{{ request()->input('query') }}" placeholder="Search" name="query">
-            <button class="btn btn-outline-dark my-2 my-sm-0" id="submitButton" style="margin-top:-5px">Search</button>
-          </form>
-        </li>
-
-        @if (Auth::check())
-        <li class="dropdown">
-          <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello {{ Auth::user()->name }} <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="{{ route('posts.index') }}">Posts</a></li>
-            <li><a href="{{ route('categories.index') }}">Categories</a></li>
-            <li><a href="{{ route('tags.index') }}">Tags</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Logout') }}
-                </a>
-
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
-            </li>
-          @else
-            <li><a href="{{ route('register') }}">Register</a></li>
-            <li><a href="{{ route('login') }}">Login</a></li>
+        @else 
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="{{ Request::is('/') ? "active" : "" }}"><a href="/">Home</a></li>
+            <li class="{{ Request::is('blog') ? "active" : "" }}"><a href="/blog">Blog</a></li>
+            <li class="{{ Request::is('about') ? "active" : "" }}"><a href="/about">About</a></li>
+          </ul>
           @endif
 
-          </ul>
-        </li>
-      </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li class="searchBar">
+              <form class="form-inline my-2 my-lg-0" method="GET" action={{ route('search') }}>
+                <input class="form-control mr-sm-2" type="search" style="margin-top:7px" value="{{ request()->input('query') }}" placeholder="Search" name="query">
+                <button class="btn btn-outline-dark my-2 my-sm-0" id="submitButton" style="margin-top:-5px">Search</button>
+              </form>
+            </li>
+
+        <!-- Authentication Links -->
+            @guest
+              <li>
+                  <a href="{{ route('login') }}">{{ __('Login') }}</a>
+              </li>
+              @if (Route::has('register'))
+              <li>
+                  <a href="{{ route('register') }}">{{ __('Register') }}</a>
+              </li>
+              @endif
+              @else
+                  <li class="dropdown">
+                  <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello {{ Auth::user()->name }} <span class="caret"></span></a>
+
+                      @if(\Illuminate\Support\Facades\Auth::guard('admin')->check())
+                              <ul class="dropdown-menu">
+                              <li><a href="{{ route('posts.index') }}">Posts</a></li>
+                              <li><a href="{{ route('categories.index') }}">Categories</a></li>
+                              <li><a href="{{ route('tags.index') }}">Tags</a></li>
+                              <li role="separator" class="divider"></li>
+                              <li><a class="dropdown-item" href="{{ route('admin.logout') }}"
+                                 onclick="event.preventDefault();
+                                           document.getElementById('admin-logout-form').submit();">
+                                  {{ __('Logout') }}
+                              </a></li>
+
+                              <form id="admin-logout-form" action="{{ route('admin.logout') }}" method="POST"
+                                    style="display: none;">
+                                  @csrf
+                              </form>
+                            </ul>
+                      @else
+                              <ul class="dropdown-menu">
+                              <li><a href="/blog">Blog Posts</a></li>
+                              <li><a href="{{ route('categories.index') }}">Categories</a></li>
+                              <li><a href="{{ route('tags.index') }}">Tags</a></li>
+                              <li><a href="/contact">Contact us</a></li>
+                              <li role="separator" class="divider"></li>
+                              <li><a class="dropdown-item" href="{{ route('user.logout') }}"
+                                 onclick="event.preventDefault();
+                                           document.getElementById('user-logout-form').submit();">
+                                  {{ __('Logout') }}
+                              </a></li>
+
+                              <form id="user-logout-form" action="{{ route('user.logout') }}" method="POST"
+                                    style="display: none;">
+                                  @csrf
+                              </form>
+                            </ul>
+                      @endif
+                  </li>
+                  @endguest
+
+              </ul>
+          </div>
     </div>
-  </div>
 </nav>

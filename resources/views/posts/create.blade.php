@@ -41,7 +41,7 @@
 				{{ Form::text('title', null, array('class' => 'form-control', 'required' => '', 'maxlength' => '255')) }}
 
 				{{ Form::label('slug', 'Slug:') }}
-				{{ Form::text('slug', null, array('class' => 'form-control', 'required' => '', 'minlength' => '5', 'maxlength' => '255') ) }}
+				{{ Form::text('slug', null, array('class' => 'form-control', 'required' => '', 'minlength' => '3', 'maxlength' => '255') ) }}
 
 				{{ Form::label('category_id', 'Category:') }}
 				<select class="form-control" name="category_id">

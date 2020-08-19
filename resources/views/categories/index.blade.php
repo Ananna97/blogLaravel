@@ -42,7 +42,7 @@
 
 
 						{{ Form::label('description', 'Description:') }}
-						{{ Form::text('description', null, ['class' => 'form-control']) }}
+						{{ Form::textarea('description', null, ['rows'=>4, 'cols'=>10, 'class' => 'form-control']) }}
 
 						{{ Form::submit('Create New Category', ['id'=>"submitButton", 'class' => 'btn btn-primary btn-block btn-h1-spacing']) }}
 					
